@@ -40,18 +40,25 @@ function createBox(item) {
   figCap.appendChild(p);
   let div3 = document.createElement('div');
   fig.appendChild(div3);
-  div3.setAttribute('class', 'bottom-wrap');
+  div3.setAttribute('class', 'bottom-wrap row');
+  let div5 = document.createElement('div');
+  div5.setAttribute('class', 'col');
+  div3.appendChild(div5);
+  let div6 = document.createElement('div');
+  div5.appendChild(div6);
+  div6.setAttribute('class', 'h4');
+  let span = document.createElement('span');
+  div6.appendChild(span);
+  span.innerText = `$${item.price}`;
+  let div4 = document.createElement('div');
+  div4.setAttribute('class', 'col');
+  div3.appendChild(div4);
   let a = document.createElement('a');
-  div3.appendChild(a);
+  div4.appendChild(a);
   a.setAttribute('class', 'btn btn-sm btn-primary float-right');
   a.href = '#';
   a.innerText = 'Add to cart';
-  let div4 = document.createElement('div');
-  div3.appendChild(div4);
-  div4.setAttribute('class', 'h4');
-  let span = document.createElement('span');
-  div4.appendChild(span);
-  span.innerText = `$${item.price}`;
+  
   return div1;
 }
 
