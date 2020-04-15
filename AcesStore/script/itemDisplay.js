@@ -1,7 +1,13 @@
 let itemsList = window.items;
 
-function getItem(collection) {
-  return itemsList.filter(item => collection.toUpperCase() === item.category);
+function getItem(collection, gender) {
+  if (gender)
+    return itemsList.filter(item => collection.toUpperCase() === item.category && gender.toUpperCase() === item.gender);
+  else return itemsList.filter(item => collection.toUpperCase() === item.category);
+}
+
+function getByGender(gender) {
+  return itemsList.filter(item => gender.toUpperCase() === item.gender);
 }
 
 function clearDiv() {
@@ -65,27 +71,39 @@ function displayItemMain(items) {
 function click() {
   document.querySelectorAll('.EN').forEach(query =>
     query.addEventListener('click', () => {
-      displayItem(getItem(query.className.split(' ')[1]));
-      document.querySelector('#MenuText').innerText = 'Classic Collection';
+      displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
+      if (query.className.split(' ')[1] === 'F')
+        document.querySelector('#MenuText').innerText = 'Women - Classic Collection';
+      else
+        document.querySelector('#MenuText').innerText = 'Men - Classic Collection';
     })
   );
   document.querySelectorAll('.JP').forEach(query =>
     query.addEventListener('click', () => {
-      displayItem(getItem(query.className.split(' ')[1]));
-      document.querySelector('#MenuText').innerText = 'Japanese Collection';
+      displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
+      if (query.className.split(' ')[1] === 'F')
+        document.querySelector('#MenuText').innerText = 'Women - Japanese Collection';
+      else
+        document.querySelector('#MenuText').innerText = 'Men - Japanese Collection';
     })
   );
   document.querySelectorAll('.Music').forEach(query =>
     query.addEventListener('click', () => {
-      displayItem(getItem(query.className.split(' ')[1]));
-      document.querySelector('#MenuText').innerText = 'Music Collection';
+      displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
+      if (query.className.split(' ')[1] === 'F')
+        document.querySelector('#MenuText').innerText = 'Women - Music Collection';
+      else
+        document.querySelector('#MenuText').innerText = 'Men - Music Collection';
     })
   );
 }
 window.addEventListener('load', click);
 window.addEventListener('load', () => {
-  if (document.querySelector('#itemRow'))
-    displayItem(itemsList);
-  if (document.querySelector('#mainItemRow'))
+  if (document.querySelector('#itemRow')) {
+    if (document.querySelector('#itemRow').getAttribute('data-gender') === 'F')
+      displayItem(getByGender('F'));
+    else if (document.querySelector('#itemRow').getAttribute('data-gender') === 'M')
+      displayItem(getByGender('M'));
+  } else if (document.querySelector('#mainItemRow'))
     displayItemMain(getItem('Music'));
 });
