@@ -40,25 +40,40 @@ function createBox(item) {
   figCap.appendChild(p);
   let div3 = document.createElement('div');
   fig.appendChild(div3);
-  div3.setAttribute('class', 'bottom-wrap row');
-  let div5 = document.createElement('div');
-  div5.setAttribute('class', 'col');
-  div3.appendChild(div5);
-  let div6 = document.createElement('div');
-  div5.appendChild(div6);
-  div6.setAttribute('class', 'h4');
-  let span = document.createElement('span');
-  div6.appendChild(span);
-  span.innerText = `$${item.price}`;
+  div3.setAttribute('class', 'bottom-wrap');
+  let row1 = document.createElement('div');
+  row1.setAttribute('class', 'row');
+  div3.appendChild(row1);
   let div4 = document.createElement('div');
   div4.setAttribute('class', 'col');
-  div3.appendChild(div4);
+  row1.appendChild(div4);
+  let div5 = document.createElement('div');
+  div4.appendChild(div5);
+  div5.setAttribute('class', 'h4');
+  let span = document.createElement('span');
+  div5.appendChild(span);
+  span.innerText = `$${item.price}`;
+  let div5_ = document.createElement('div');
+  div5_.setAttribute('class', 'col');
+  row1.appendChild(div5_);
+  let a_i = document.createElement('a');
+  a_i.setAttribute('href','#');
+  a_i.setAttribute('class','nav-link linkWishlist')
+  div5_.appendChild(a_i);
+  let i = document.createElement('i');
+  i.setAttribute('class','far fa-heart');
+  a_i.appendChild(i);
+  let row2 = document.createElement('div');
+  row2.setAttribute('class', 'row');
+  div3.appendChild(row2);
+  let div6 = document.createElement('div');
+  div6.setAttribute('class', 'col');
+  row2.appendChild(div6);
   let a = document.createElement('a');
-  div4.appendChild(a);
-  a.setAttribute('class', 'btn btn-sm btn-primary float-right');
+  div6.appendChild(a);
+  a.setAttribute('class', 'btn btn-sm btn-primary btn-block');
   a.href = '#';
   a.innerText = 'Add to cart';
-  
   return div1;
 }
 
