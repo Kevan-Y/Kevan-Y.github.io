@@ -2,7 +2,7 @@
 
 body {
   background-color: #eeeeee !important;
-  font-family: 'Comic Neue', cursive!important;
+  font-family: 'Comic Neue', cursive !important;
 }
 h1,
 h2,
@@ -73,7 +73,6 @@ h6 {
   padding: 1em;
   border-top: 0.1em solid #eee;
   border-bottom: 0.1em solid #eee;
-
 }
 .product .bottom-wrap {
   padding: 1em;
@@ -154,7 +153,7 @@ footer {
 }
 
 .linkWishlist {
-  text-decoration: none!important;
-  padding: 0!important;
-  color: #6d7070!important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  color: #6d7070 !important;
 }

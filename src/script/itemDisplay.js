@@ -2,8 +2,10 @@ let itemsList = window.items;
 
 function getItem(collection, gender) {
   if (gender)
-    return itemsList.filter(item => collection.toUpperCase() === item.category && gender.toUpperCase() === item.gender);
-  else return itemsList.filter(item => collection.toUpperCase() === item.category);
+    return itemsList.filter(
+      item => collection.toUpperCase() === item.category && gender.toUpperCase() === item.gender
+    );
+  return itemsList.filter(item => collection.toUpperCase() === item.category);
 }
 
 function getByGender(gender) {
@@ -57,11 +59,11 @@ function createBox(item) {
   div5_.setAttribute('class', 'col');
   row1.appendChild(div5_);
   let a_i = document.createElement('a');
-  a_i.setAttribute('href','#');
-  a_i.setAttribute('class','nav-link linkWishlist')
+  a_i.setAttribute('href', '#');
+  a_i.setAttribute('class', 'nav-link linkWishlist');
   div5_.appendChild(a_i);
   let i = document.createElement('i');
-  i.setAttribute('class','far fa-heart');
+  i.setAttribute('class', 'far fa-heart');
   a_i.appendChild(i);
   let row2 = document.createElement('div');
   row2.setAttribute('class', 'row');
@@ -96,8 +98,7 @@ function click() {
       displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
       if (query.className.split(' ')[1] === 'F')
         document.querySelector('#MenuText').innerText = 'Women - Classic Collection';
-      else
-        document.querySelector('#MenuText').innerText = 'Men - Classic Collection';
+      else document.querySelector('#MenuText').innerText = 'Men - Classic Collection';
     })
   );
   document.querySelectorAll('.JP').forEach(query =>
@@ -105,8 +106,7 @@ function click() {
       displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
       if (query.className.split(' ')[1] === 'F')
         document.querySelector('#MenuText').innerText = 'Women - Japanese Collection';
-      else
-        document.querySelector('#MenuText').innerText = 'Men - Japanese Collection';
+      else document.querySelector('#MenuText').innerText = 'Men - Japanese Collection';
     })
   );
   document.querySelectorAll('.Music').forEach(query =>
@@ -114,8 +114,7 @@ function click() {
       displayItem(getItem(query.className.split(' ')[2], query.className.split(' ')[1]));
       if (query.className.split(' ')[1] === 'F')
         document.querySelector('#MenuText').innerText = 'Women - Music Collection';
-      else
-        document.querySelector('#MenuText').innerText = 'Men - Music Collection';
+      else document.querySelector('#MenuText').innerText = 'Men - Music Collection';
     })
   );
 }
@@ -126,6 +125,5 @@ window.addEventListener('load', () => {
       displayItem(getByGender('F'));
     else if (document.querySelector('#itemRow').getAttribute('data-gender') === 'M')
       displayItem(getByGender('M'));
-  } else if (document.querySelector('#mainItemRow'))
-    displayItemMain(getItem('Music'));
+  } else if (document.querySelector('#mainItemRow')) displayItemMain(getItem('Music'));
 });
